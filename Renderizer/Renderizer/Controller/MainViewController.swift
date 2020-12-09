@@ -58,13 +58,22 @@ final class MainViewController: UIViewController {
 
 //MARK: - Network Delegate
 extension MainViewController: NetworkDelegate {
-    func didUpdateImage(_ network: Network, _ networkData: NetworkModel) {
+    
+    
+    /// Request and Update Image
+    /// - Parameters:
+    ///   - network: Network
+    ///   - networkData: Network Model
+    func didUpdateImage(_ network: Network, _ networkModel: NetworkModel) {
         DispatchQueue.main.async {
-            self.baseView.randomImage.kf.setImage(with: networkData.small)
-            self.imageToSave.kf.setImage(with: networkData.small)
+            self.baseView.randomImage.kf.setImage(with: networkModel.small)
+            self.imageToSave.kf.setImage(with: networkModel.small)
         }
     }
     
+    
+    /// Did Fail With Error
+    /// - Parameter error: Error
     func didFailWithError(_ error: Error) {
         print(error)
     }
@@ -85,6 +94,9 @@ extension MainViewController {
         //Save Image Button Target
         baseView.saveBarButton.addTarget(self, action: #selector(didSaveImageButtonClicked), for: .touchUpInside)
         
+        //Save Image Button Target
+        baseView.updateBarButton.addTarget(self, action: #selector(didUpdateButtonClicked), for: .touchUpInside)
+        
     }
     
     /// Update Toolbar
@@ -96,25 +108,33 @@ extension MainViewController {
 //MARK: - Actions
 extension MainViewController {
     
-    
     /// Call Filters
     @objc private func didFiltersButtonClicked() {
         //Function
     }
     
+    /// Call Filters
+    @objc private func didUpdateButtonClicked() {
+        DispatchQueue.main.async {
+            self.network.fetchImage()
+        }
+    }
     
     /// Save Image In Camera Roll
     @objc private func didSaveImageButtonClicked() {
+      
+        //Guard Image To Save
         guard let image = self.imageToSave.image else {
             print(Error.self)
             return
         }
+        
+        //Save In Camera Roll
         UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
         
+        //Create and Call Alert
         let alert = UIAlertController(title: "Salvar Imagem", message: "Imagem salva com sucesso.", preferredStyle: .alert)
-       
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-        
         self.present(alert, animated: true)
         
     }

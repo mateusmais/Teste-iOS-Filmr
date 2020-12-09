@@ -11,7 +11,7 @@ import UIKit
 //MARK: - Network Delegate
 /// Network Delegate
 protocol NetworkDelegate {
-    func didUpdateImage(_ network: Network, _ networkData: NetworkModel)
+    func didUpdateImage(_ network: Network, _ networkModel: NetworkModel)
     func didFailWithError(_ error: Error)
 }
 
