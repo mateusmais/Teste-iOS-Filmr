@@ -24,8 +24,26 @@ class MainView: UIView {
     let randomImage: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
+        image.layer.cornerRadius = 16
+        image.layer.masksToBounds = true
         return image
     }()
+    
+    let filtersBarButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "filters"), for: .normal)
+        button.setImage(UIImage(named: "filtersPressed"), for: .selected)
+        button.setTitle("Filtros", for: .normal)
+        button.sizeToFit()
+        button.centerLabelVerticallyWithPadding(spacing: 0.5, alingment: 0)
+        return button
+    }()
+    
+     lazy var filtersButtonItem: UIBarButtonItem = {
+        let button = UIBarButtonItem(customView: self.filtersBarButton)
+        return button
+    }()
+    
     
     //MARK: - Initializer
     init() {
@@ -59,7 +77,8 @@ extension MainView: ViewCodable {
             // Random Image
             self.randomImage.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             self.randomImage.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            
+            self.randomImage.widthAnchor.constraint(equalTo: self.layoutMarginsGuide.widthAnchor)
+
         ])
     }
     

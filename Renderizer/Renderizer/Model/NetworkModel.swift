@@ -10,5 +10,5 @@ import UIKit
 
  
 struct NetworkModel {
-    let full: URL
+    let small: URL
 }

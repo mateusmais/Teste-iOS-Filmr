@@ -64,9 +64,9 @@ struct Network {
         
         do {
             let decodedImageData = try decode.decode(NetworkData.self, from: imageData)
-            let imageFullData = decodedImageData.urls.full
-            let imageFull = NetworkModel(full: imageFullData)
-            return imageFull
+            let imageSmallData = decodedImageData.urls.small
+            let imageSmall = NetworkModel(small: imageSmallData)
+            return imageSmall
         } catch  {
             delegate?.didFailWithError(error)
             return nil
