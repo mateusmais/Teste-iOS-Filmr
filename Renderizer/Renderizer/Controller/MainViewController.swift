@@ -76,10 +76,13 @@ extension MainViewController {
     /// Setup Toolbar With Update And Actions
     private func setupToolbar() {
         
+        //Call Update ToolBar Items
         updateToolbarItems()
         
+        //Filters Button Target
         baseView.filtersBarButton.addTarget(self, action: #selector(didFiltersButtonClicked), for: .touchUpInside)
         
+        //Save Image Button Target
         baseView.saveBarButton.addTarget(self, action: #selector(didSaveImageButtonClicked), for: .touchUpInside)
         
     }
@@ -93,15 +96,26 @@ extension MainViewController {
 //MARK: - Actions
 extension MainViewController {
     
+    
+    /// Call Filters
     @objc private func didFiltersButtonClicked() {
         //Function
     }
     
+    
+    /// Save Image In Camera Roll
     @objc private func didSaveImageButtonClicked() {
         guard let image = self.imageToSave.image else {
             print(Error.self)
             return
         }
-        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+        
+        let alert = UIAlertController(title: "Salvar Imagem", message: "Imagem salva com sucesso.", preferredStyle: .alert)
+       
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        
+        self.present(alert, animated: true)
+        
     }
 }
