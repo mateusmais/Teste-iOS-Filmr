@@ -10,7 +10,7 @@ import UIKit
 
 
 /// Main View Class
-class MainView: UIView {
+final class MainView: UIView {
     
     //MARK: - Variables
     let backgroundView: UIImageView = {
@@ -32,7 +32,7 @@ class MainView: UIView {
         let button = UIButton()
         button.setImage(UIImage(named: "filters"), for: .normal)
         button.setImage(UIImage(named: "filtersPressed"), for: .selected)
-        button.setTitle("Filtros", for: .normal)
+        button.setTitle("Filtro", for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.setTitleColor(.white, for: .highlighted)
         button.sizeToFit()

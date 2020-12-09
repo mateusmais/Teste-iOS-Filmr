@@ -31,7 +31,7 @@ struct Network {
     //MARK: - Perform Request
     /// Make Requisition
     /// - Parameter urlString: API Url
-    private func performRequest(with urlString: String){
+    func performRequest(with urlString: String){
         //1. Create URL
         if let url = URL(string: urlString) {
             
@@ -59,7 +59,7 @@ struct Network {
     /// Parsing Image URL Data to Image URL
     /// - Parameter imageData: Image Data
     /// - Returns: Image URL
-    private func parseImageJSON(_ imageData: Data) -> NetworkModel? {
+    func parseImageJSON(_ imageData: Data) -> NetworkModel? {
         let decode = JSONDecoder()
         
         do {
