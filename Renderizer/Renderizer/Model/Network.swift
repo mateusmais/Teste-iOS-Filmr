@@ -11,7 +11,7 @@ import UIKit
 //MARK: - Network Delegate
 /// Network Delegate
 protocol NetworkDelegate {
-    func didUpdateImage(_ network: Network, _ networkData: NetworkModel)
+    func didUpdateImage(_ network: Network, _ networkModel: NetworkModel)
     func didFailWithError(_ error: Error)
 }
 
@@ -31,7 +31,7 @@ struct Network {
     //MARK: - Perform Request
     /// Make Requisition
     /// - Parameter urlString: API Url
-    private func performRequest(with urlString: String){
+    func performRequest(with urlString: String){
         //1. Create URL
         if let url = URL(string: urlString) {
             
@@ -59,14 +59,14 @@ struct Network {
     /// Parsing Image URL Data to Image URL
     /// - Parameter imageData: Image Data
     /// - Returns: Image URL
-    private func parseImageJSON(_ imageData: Data) -> NetworkModel? {
+    func parseImageJSON(_ imageData: Data) -> NetworkModel? {
         let decode = JSONDecoder()
         
         do {
             let decodedImageData = try decode.decode(NetworkData.self, from: imageData)
-            let imageFullData = decodedImageData.urls.full
-            let imageFull = NetworkModel(full: imageFullData)
-            return imageFull
+            let imageSmallData = decodedImageData.urls.small
+            let imageSmall = NetworkModel(small: imageSmallData)
+            return imageSmall
         } catch  {
             delegate?.didFailWithError(error)
             return nil
