@@ -20,7 +20,7 @@ protocol NetworkDelegate {
 struct Network {
     
     //Variables
-    private var delegate: NetworkDelegate?
+    var delegate: NetworkDelegate?
     private var randomImageURL = "https://api.unsplash.com/photos/random?client_id=\(Key.accessKey)"
     
     func fetchImage(){

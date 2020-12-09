@@ -21,6 +21,12 @@ class MainView: UIView {
         return background
     }()
     
+    let randomImage: UIImageView = {
+        let image = UIImageView()
+        image.translatesAutoresizingMaskIntoConstraints = false
+        return image
+    }()
+    
     //MARK: - Initializer
     init() {
         super.init(frame: .zero)
@@ -31,7 +37,6 @@ class MainView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }
 
 
@@ -39,6 +44,7 @@ extension MainView: ViewCodable {
     
     func setupViewHierarchy() {
         self.addSubview(backgroundView)
+        self.addSubview(randomImage)
     }
     
     func setupConstraints() {
@@ -48,8 +54,12 @@ extension MainView: ViewCodable {
             self.backgroundView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             self.backgroundView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             self.backgroundView.widthAnchor.constraint(equalTo: self.widthAnchor),
-            self.backgroundView.heightAnchor.constraint(equalTo: self.heightAnchor)
-        
+            self.backgroundView.heightAnchor.constraint(equalTo: self.heightAnchor),
+            
+            // Random Image
+            self.randomImage.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            self.randomImage.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            
         ])
     }
     
