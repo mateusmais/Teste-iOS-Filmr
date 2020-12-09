@@ -7,9 +7,10 @@
 
 import Foundation
 import UIKit
+import Kingfisher
 
 
-final class MainViewController: UIViewController{
+final class MainViewController: UIViewController {
     
     
     //MARK: - Variables
