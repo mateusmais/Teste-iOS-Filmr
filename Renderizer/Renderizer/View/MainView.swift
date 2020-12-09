@@ -45,11 +45,7 @@ class MainView: UIView {
         return button
     }()
     
-    lazy var saveButtonItem: UIBarButtonItem = {
-        let button = UIBarButtonItem(customView: self.saveBarButton)
-        return button
-    }()
-    
+
     let saveBarButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "savePhoto"), for: .normal)
@@ -59,6 +55,28 @@ class MainView: UIView {
         button.setTitleColor(.white, for: .highlighted)
         button.sizeToFit()
         button.centerLabelVerticallyWithPadding(spacing: 0.5, alingment: 0)
+        return button
+    }()
+    
+    lazy var saveButtonItem: UIBarButtonItem = {
+        let button = UIBarButtonItem(customView: self.saveBarButton)
+        return button
+    }()
+    
+    let updateBarButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "updatePhoto"), for: .normal)
+        button.setImage(UIImage(named: "updatePhotoPressed"), for: .selected)
+        button.setTitle("Atualizar", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.setTitleColor(.white, for: .highlighted)
+        button.sizeToFit()
+        button.centerLabelVerticallyWithPadding(spacing: 0.5, alingment: 0)
+        return button
+    }()
+    
+    lazy var updateButtonItem: UIBarButtonItem = {
+        let button = UIBarButtonItem(customView: self.updateBarButton)
         return button
     }()
     
@@ -112,6 +130,6 @@ extension MainView: ViewCodable {
 extension MainView {
     
     func getBarButtonItems() -> [UIBarButtonItem] {
-        return [filtersButtonItem, saveButtonItem]
+        return [filtersButtonItem, .flexibleSpace(), updateButtonItem, .flexibleSpace(), saveButtonItem]
     }
 }
