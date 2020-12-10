@@ -128,6 +128,7 @@
 		6E1C89C7257EA1DF009A5440 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				6E742F1D257E9F7800003BF6 /* LaunchScreen.storyboard */,
 				6E1C89D8257EA291009A5440 /* MainViewController.swift */,
 			);
 			path = Controller;
@@ -201,7 +202,6 @@
 				6E1C89C7257EA1DF009A5440 /* Controller */,
 				6E1C89C6257EA1D6009A5440 /* View */,
 				6E742F1B257E9F7800003BF6 /* Assets.xcassets */,
-				6E742F1D257E9F7800003BF6 /* LaunchScreen.storyboard */,
 				6E742F20257E9F7800003BF6 /* Info.plist */,
 			);
 			path = Renderizer;
